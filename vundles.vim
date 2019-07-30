@@ -11,13 +11,14 @@
 Bundle 'gmarik/vundle'
 " Required for settings
 Bundle 'chriskempson/base16-vim'
+" Bundle 'chriskempson/base16-iterm2' " This is the bundle that you want on iterm, but you'll want to check it out locally in non-hidden location and import it into iterm https://github.com/chriskempson/base16-iterm2
 
 " General
 if count(g:vundles, 'general')
   Bundle 'scrooloose/nerdtree'
-  Bundle 'YankRing.vim'
-  let g:yankring_history_dir = $HOME.'/.vim/'
-  let g:yankring_history_file = '.yankring_history'
+  " Bundle 'YankRing.vim'
+  " let g:yankring_history_dir = $HOME.'/.vim/'
+  " let g:yankring_history_file = '.yankring_history'
   ""Bundle 'tpope/vim-repeat'
   ""Bundle 'AutoClose'
   Bundle 'kien/ctrlp.vim'
@@ -27,8 +28,10 @@ if count(g:vundles, 'general')
   Bundle 'mbbill/undotree'
   Bundle 'mhinz/vim-signify'
   Bundle 'Raimondi/delimitMate'
-  Bundle 'bling/vim-airline'
+  " Bundle 'bling/vim-airline' " This should be replaced by the below
+  Bundle 'vim-airline/vim-airline-themes'
   Bundle 'rodjek/vim-puppet'
+  Bundle 'hhvm/vim-hack'
 endif
 
 if count(g:vundles, 'git')
@@ -49,7 +52,8 @@ if count(g:vundles, 'programming')
     Bundle 'mileszs/ack.vim'
   endif
   if v:version > 700
-    Bundle 'scrooloose/syntastic'
+    " Bundle 'scrooloose/syntastic' "This does cool syntax checking - but is SUPER slow on our
+    " java code with current settings.
     if executable('ctags')
       Bundle 'majutsushi/tagbar'
     endif
@@ -86,7 +90,8 @@ endif
 " HTML
 if count(g:vundles, 'html')
   Bundle 'HTML-AutoCloseTag'
-  Bundle 'hail2u/vim-css3-syntax'
+  Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+  " Bundle 'hail2u/vim-css3-syntax'
   Bundle 'juvenn/mustache.vim'
 endif
 

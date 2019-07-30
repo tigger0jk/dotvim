@@ -8,7 +8,8 @@
 "
 
 if has("user_commands")
-  let base16colorspace=256
+  " let base16colorspace=256
+  " Might want to re-enable this depending on your terminal
   if (match($LC_TERM_PROFILE, "light") != -1)
     set background=light
   else
@@ -39,7 +40,7 @@ if has("user_commands")
   elseif (match($LC_TERM_PROFILE, "base16-tomorrow") != -1)
     colorscheme base16-tomorrow
   else
-    colorscheme base16-default
+    colorscheme base16-default-dark " The old default was base16-default, but that has been removed, so defaulting to dark now
   endif
   if (match($LC_TERM_PROFILE, "base16") != -1)
     highlight clear SignColumn
