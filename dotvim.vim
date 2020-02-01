@@ -60,6 +60,9 @@ vnoremap // y/\V<C-R>"<CR>
 " map leader character to ',' (easier to type than '\')
 let mapleader = ","
 
+" run file with Python interpreter (,p)
+:autocmd BufNewFile,BufRead *.py noremap <leader>p :w!<CR>:!python3 %<CR>
+
 " run file with PHP interpreter (,p)
 :autocmd FileType php noremap <leader>p :w!<CR>:!php %<CR>
 
