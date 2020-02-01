@@ -21,6 +21,7 @@ if count(g:vundles, 'general')
   " let g:yankring_history_file = '.yankring_history'
   ""Bundle 'tpope/vim-repeat'
   ""Bundle 'AutoClose'
+  Bundle 'preservim/nerdcommenter'
   Bundle 'kien/ctrlp.vim'
   Bundle 'jistr/vim-nerdtree-tabs'
   Bundle 'sudo.vim'
