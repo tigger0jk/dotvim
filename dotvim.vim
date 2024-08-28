@@ -40,10 +40,17 @@ set shellcmdflag=-c
 " set shellcmdflag=-                "set vim to use the interactive shell so that the bashrc is used and aliases
                                     "are available when running commands through :!command
 
-"set color scheme
+" set color scheme
 " For iterm2, you'll want to check this out locally in non-hidden location and import a color scheme https://github.com/chriskempson/base16-iterm2
 " set background=dark
 " colorscheme base16-monokai
+" colorscheme elflord
+
+
+" set regex engine to 2 - fixes typescript highlighting issue on mac
+" https://vi.stackexchange.com/questions/25086/vim-hangs-when-i-open-a-typescript-file/28721
+" https://stackoverflow.com/questions/69145357/vim-almost-hangs-with-100-line-typescript-file
+set re=2
 
 "after writing a php or json file - lint it (:w saves and syntax checks in php and json)
 " au BufWritePost *.php !php -l %
@@ -57,11 +64,20 @@ au BufWritePost *.json !cat % | python -m json.tool
 " this one does current not previous, but doesn't handle slashes
 vnoremap // y/\V<C-R>"<CR>
 
+" == will reformat the whole file
+map == gg=G<C-o><C-o>
+
 " map leader character to ',' (easier to type than '\')
 let mapleader = ","
 
+" set filetypes
+autocmd BufNewFile,BufRead *.service* set ft=systemd
+
 " run file with Python interpreter (,p)
 :autocmd BufNewFile,BufRead *.py noremap <leader>p :w!<CR>:!python3 %<CR>
+
+" run file with Bash interpreter (,p)
+:autocmd BufNewFile,BufRead *.sh noremap <leader>p :w!<CR>:!./%<CR>
 
 " run file with PHP interpreter (,p)
 :autocmd FileType php noremap <leader>p :w!<CR>:!php %<CR>
@@ -146,6 +162,9 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 " Instead using NERDCommenter options:
 let g:NERDSpaceDelims = 1
+let g:NERDCustomDelimiters = {
+    \ 'systemd': { 'left': '#', 'leftAlt': ';' }
+    \ }
 
 " Custom Functions
 " TODO PFAY THIS IS BUSETED
